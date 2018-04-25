@@ -1,14 +1,26 @@
 // Click on item to complete
-$('li').on("click", function() {
+$('ul').on("click", "li", function() {
 	$(this).toggleClass("completed");
 });
 
 // Click on X to delete todo
-$('span').on("click", function(e) {
+$('ul').on("click", "span", function(e) {
 	// fade out then delete the span's parent li
 	$(this).parent().fadeOut(1000, function() {
 		$(this).remove();
 	})
 	// this event stops it from bubbling up into parent elements
 	e.stopPropagation();
+})
+
+// Add a new item
+$('input[type="text"]').keypress(function(e) {
+	if(e.charCode === 13) {
+		// grabbing text from input
+		var todoText = $(this).val();
+		// create a new li to the ul
+		$('ul').append("<li><span>X</span> " + todoText + "</li>");
+		// clear the input
+		$(this).val("");
+	}
 })
