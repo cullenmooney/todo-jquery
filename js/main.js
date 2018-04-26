@@ -19,8 +19,13 @@ $('input[type="text"]').keypress(function(e) {
 		// grabbing text from input
 		var todoText = $(this).val();
 		// create a new li to the ul
-		$('ul').append("<li><span>X</span> " + todoText + "</li>");
+		$('ul').append("<li><span><i class='fas fa-trash'></i></span> " + todoText + "</li>");
 		// clear the input
 		$(this).val("");
 	}
 })
+
+// Toggle the plus button
+$('#toggle-form').click(function() {
+	$('input[type="text"]').fadeToggle();
+});
